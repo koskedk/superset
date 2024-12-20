@@ -27,7 +27,7 @@ import { QueryParamProvider } from 'use-query-params';
 import createCache from '@emotion/cache';
 import { ThemeProvider } from '@superset-ui/core';
 import Menu from 'src/features/home/Menu';
-import { theme } from 'src/preamble';
+import { theme } from '@superset-ui/core';
 import getBootstrapData from 'src/utils/getBootstrapData';
 import { setupStore } from './store';
 

@@ -196,7 +196,7 @@ class WordCloud extends PureComponent<FullWordCloudProps, WordCloudState> {
     cloudLayout()
       .size([width * scaleFactor, height * scaleFactor])
       // clone the data because cloudLayout mutates input
-      .words(data.map(d => ({ ...d })))
+      .words(data.map((d: Word) => ({ ...d })))
       .padding(5)
       .rotate(ROTATION[rotation] || ROTATION.flat)
       .text((d: PlainObject) => encoder.channels.text.getValueFromDatum(d))

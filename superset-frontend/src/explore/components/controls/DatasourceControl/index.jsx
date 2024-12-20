@@ -106,7 +106,6 @@ const Styles = styled.div`
   .title-select {
     flex: 1 1 100%;
     display: inline-block;
-    background-color: ${({ theme }) => theme.colors.grayscale.light3};
     padding: ${({ theme }) => theme.gridUnit * 2}px;
     border-radius: ${({ theme }) => theme.borderRadius}px;
     text-align: center;

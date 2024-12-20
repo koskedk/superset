@@ -18,7 +18,7 @@
  */
 
 import { CSSProperties } from 'react';
-import { css, styled } from '../../style';
+import { css, styled } from '@superset-ui/core';
 import { t } from '../../translation';
 
 const MESSAGE_STYLES: CSSProperties = { maxWidth: 800 };

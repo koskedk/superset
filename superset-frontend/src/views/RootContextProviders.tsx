@@ -18,13 +18,13 @@
  */
 
 import { Route } from 'react-router-dom';
-import { getExtensionsRegistry, ThemeProvider } from '@superset-ui/core';
+import { getExtensionsRegistry } from '@superset-ui/core';
+import { ThemeProvider, AntdThemeProvider } from '@superset-ui/core';
 import { Provider as ReduxProvider } from 'react-redux';
 import { QueryParamProvider } from 'use-query-params';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import getBootstrapData from 'src/utils/getBootstrapData';
-import { AntdThemeProvider } from '../components/AntdThemeProvider';
 import { store } from './store';
 import FlashProvider from '../components/FlashProvider';
 import { theme } from '../preamble';
@@ -34,12 +34,10 @@ import { DynamicPluginProvider } from '../components/DynamicPlugins';
 const { common } = getBootstrapData();
 
 const extensionsRegistry = getExtensionsRegistry();
-
 export const RootContextProviders: React.FC = ({ children }) => {
   const RootContextProviderExtension = extensionsRegistry.get(
     'root.context.provider',
   );
-
   return (
     <ThemeProvider theme={theme}>
       <AntdThemeProvider>

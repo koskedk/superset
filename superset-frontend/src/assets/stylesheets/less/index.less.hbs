@@ -1,4 +1,4 @@
-/*
+/**
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
  * distributed with this work for additional information
@@ -16,32 +16,32 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+// Index .less, any imports here will be included in the final css build
 
-import { supersetTheme } from '@superset-ui/core';
+@import '~bootstrap/less/bootstrap.less';
+@import './fonts.less';
+@import './variables.less';
+@import './cosmo/bootswatch.less';
 
-export default {
-  title: 'Core Packages/@superset-ui-style',
-};
+html,
+body {
+  font-size: @font-size-base;
+  line-height: @line-height-base;
+}
 
-export const ThemeColors = () => {
-  const { colors } = supersetTheme;
-  return Object.keys(colors).map(collection => (
-    <div>
-      <h2>{collection}</h2>
-      <table style={{ width: '300px' }}>
-        {Object.keys(colors[collection]).map(k => {
-          const hex = colors[collection][k];
-          return (
-            <tr>
-              <td>{k}</td>
-              <td>
-                <code>{hex}</code>
-              </td>
-              <td style={{ width: '150px', backgroundColor: hex }} />
-            </tr>
-          );
-        })}
-      </table>
-    </div>
-  ));
-};
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  flex: 0 1 auto;
+}
+
+#app {
+  flex: 1 1 auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}

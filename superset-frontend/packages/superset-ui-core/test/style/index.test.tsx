@@ -20,7 +20,6 @@
 import {
   styled,
   supersetTheme,
-  SupersetThemeProps,
   useTheme,
   ThemeProvider,
   EmotionCacheProvider,
@@ -35,13 +34,6 @@ describe('@superset-ui/style package', () => {
 
   it('exports styled component templater', () => {
     expect(typeof styled.div).toBe('function');
-  });
-
-  it('exports SupersetThemeProps', () => {
-    const props: SupersetThemeProps = {
-      theme: supersetTheme,
-    };
-    expect(typeof props).toBe('object');
   });
 
   describe('useTheme()', () => {
