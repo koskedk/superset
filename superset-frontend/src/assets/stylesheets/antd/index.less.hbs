@@ -71,8 +71,8 @@
 @text-color-tertiary: {{theme.antd.colorTextTertiary}};
 @text-color-quaternary: {{theme.antd.colorTextQuaternary}};
 @heading-color: {{theme.antd.colorBgBase}};
-//@disabled-color: {{theme.antd.colorTextDisabled}};
-//@input-placeholder-color: {{theme.antd.colorTextPlaceholder}};
+@disabled-color: {{theme.antd.colorTextSecondary}};
+@input-placeholder-color: {{theme.antd.colorTextSecondary}};
 
 /* Borders */
 @border-color-base: {{theme.antd.colorBorder}};
@@ -94,16 +94,22 @@
 @input-hover-border-color: {{theme.antd.colorPrimaryBorderHover}};
 
 /* Menus */
-@menu-highlight-color: {{theme.antd.colorTextBase}};
+@menu-bg: {{theme.antd.colorBgBase}};
+@menu-popup-bg: {{theme.antd.colorBgBase}};
 @menu-item-color: {{theme.antd.colorText}};
-@menu-bg: {{theme.antd.colorBgContainer}};
+@menu-inline-submenu-bg: {{theme.antd.colorBgBase}};
+@menu-highlight-color: {{theme.antd.colorText}};
+@menu-highlight-danger-color: {{theme.antd.colorError}};
+@menu-item-active-bg: {{theme.antd.colorText}};
+@menu-item-active-danger-bg: {{theme.antd.colorErrorBg}};
+@menu-item-group-title-color: {{theme.antd.colorText}};
 
 /* Typography */
 @font-family: {{theme.antd.fontFamily}};
 @font-family-code: {{theme.antd.fontFamilyCode}};
-@font-size-base: {{theme.antd.fontSize}};
-@font-size-sm: {{theme.antd.fontSizeSM}};
-@font-size-lg: {{theme.antd.fontSizeLG}};
+@font-size-base: {{theme.antd.fontSize}}px;
+@font-size-sm: {{theme.antd.fontSizeSM}}px;
+@font-size-lg: {{theme.antd.fontSizeLG}}px;
 @line-height-base: {{theme.antd.lineHeight}};
 @line-height-sm: {{theme.antd.lineHeightSM}};
 @line-height-lg: {{theme.antd.lineHeightLG}};

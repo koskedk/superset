@@ -94,7 +94,6 @@ const StyledHeader = styled.div`
       a,
       div {
         font-size: ${({ theme }) => theme.typography.sizes.s}px;
-        color: ${({ theme }) => theme.colors.primary.dark2};
 
         a {
           margin: 0;
@@ -114,7 +113,7 @@ const StyledHeader = styled.div`
       }
 
       &.active a {
-        background-color: ${({ theme }) => theme.colors.primary.light3};
+        background-color: ${({ theme }) => theme.colors.primary.light4};
         border-radius: ${({ theme }) => theme.borderRadius}px;
       }
     }
@@ -127,7 +126,6 @@ const StyledHeader = styled.div`
     li > div:hover,
     div > div:hover,
     div > a:hover {
-      background-color: ${({ theme }) => theme.colors.primary.light4};
       border-bottom: none;
       border-radius: ${({ theme }) => theme.borderRadius}px;
       margin-bottom: ${({ theme }) => theme.gridUnit * 2}px;
@@ -156,9 +154,6 @@ const StyledHeader = styled.div`
     }
   }
   .dropdown-menu-links > div.ant-menu-submenu-title,
-  .ant-menu-submenu-open.ant-menu-submenu-active > div.ant-menu-submenu-title {
-    color: ${({ theme }) => theme.colors.primary.dark1};
-  }
 `;
 
 const styledDisabled = (theme: SupersetTheme) => css`
