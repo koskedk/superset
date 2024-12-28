@@ -94,7 +94,7 @@ const StyledHeader = styled.div`
       a,
       div {
         font-size: ${({ theme }) => theme.typography.sizes.s}px;
-        color: ${({ theme }) => theme.colors.secondary.dark1};
+        color: ${({ theme }) => theme.colors.primary.dark2};
 
         a {
           margin: 0;
@@ -114,7 +114,7 @@ const StyledHeader = styled.div`
       }
 
       &.active a {
-        background: ${({ theme }) => theme.colors.secondary.light4};
+        background-color: ${({ theme }) => theme.colors.primary.light3};
         border-radius: ${({ theme }) => theme.borderRadius}px;
       }
     }
@@ -127,7 +127,7 @@ const StyledHeader = styled.div`
     li > div:hover,
     div > div:hover,
     div > a:hover {
-      background: ${({ theme }) => theme.colors.secondary.light4};
+      background-color: ${({ theme }) => theme.colors.primary.light4};
       border-bottom: none;
       border-radius: ${({ theme }) => theme.borderRadius}px;
       margin-bottom: ${({ theme }) => theme.gridUnit * 2}px;
