@@ -26,6 +26,33 @@ import { styled, css, SupersetTheme, t } from '@superset-ui/core';
 import Button from 'src/components/Button';
 import { Empty } from './Empty';
 
+// Importing svg images
+import FilterImage from 'src/assets/images/filter-results.svg';
+import EmptyImage from 'src/assets/images/empty.svg';
+import ChartImage from 'src/assets/images/chart.svg';
+import FilterImage from 'src/assets/images/filter.svg';
+import EmptyChartsImage from 'src/assets/images/empty-charts.svg';
+import EmptyDashboardImage from 'src/assets/images/empty-dashboard.svg';
+import UnionImage from 'src/assets/images/union.svg';
+import EmptyQueriesImage from 'src/assets/images/empty-queries.svg';
+import StarCircleImage from 'src/assets/images/star-circle.svg';
+import VectorImage from 'src/assets/images/vector.svg';
+import DocumentImage from 'src/assets/images/document.svg';
+
+const imageMap = {
+  'filter-results.svg': <EmptyImage />,
+  'empty.svg': <EmptyImage />,
+  'chart.svg': <ChartImage />,
+  'filter.svg': <FilterImage />,
+  'empty-charts.svg': <EmptyChartsImage />,
+  'empty-dashboard.svg': <EmptyDashboardImage />,
+  'union.svg': <UnionImage />,
+  'empty-queries.svg': <EmptyQueriesImage />,
+  'star-circle.svg': <StarCircleImage />,
+  'vector.svg': <VectorImage />,
+  'document.svg': <DocumentImage />,
+};
+
 export enum EmptyStateSize {
   Small,
   Medium,
@@ -55,6 +82,7 @@ const EmptyStateContainer = styled.div`
     flex-direction: column;
     width: 100%;
     height: 100%;
+    color: ${theme.colors.grayscale.light3};
     align-items: center;
     justify-content: center;
     padding: ${theme.gridUnit * 4}px;
@@ -122,9 +150,6 @@ const ActionButton = styled(Button)`
   `}
 `;
 
-const getImage = (image: string | ReactNode) =>
-  typeof image === 'string' ? `/static/assets/images/${image}` : image;
-
 const getImageHeight = (size: EmptyStateSize) => {
   switch (size) {
     case EmptyStateSize.Small:
@@ -138,13 +163,20 @@ const getImageHeight = (size: EmptyStateSize) => {
   }
 };
 
-const ImageContainer = ({ image, size }: ImageContainerProps) => (
-  <Empty
-    description={false}
-    image={getImage(image)}
-    imageStyle={getImageHeight(size)}
-  />
-);
+const ImageContainer = ({ image, size }: ImageContainerProps) => {
+  let mappedImage = image;
+  if (typeof image === 'string') {
+    mappedImage = imageMap[image];
+  }
+  console.log('HERE', image);
+  return (
+    <Empty
+      description={false}
+      image={mappedImage}
+      imageStyle={getImageHeight(size)}
+    />
+  );
+};
 
 const handleMouseDown = (e: SyntheticEvent) => {
   e.preventDefault();
