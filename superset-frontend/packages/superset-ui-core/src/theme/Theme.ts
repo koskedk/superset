@@ -21,6 +21,8 @@ import { theme as antdThemeImport } from 'antd-v5';
 import tinycolor from 'tinycolor2';
 import type { ThemeConfig } from 'antd-v5';
 
+/* eslint-disable theme-colors/no-literal-colors */
+
 interface SystemColors {
   primary: string;
   secondary: string;

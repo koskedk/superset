@@ -99,6 +99,8 @@ const ErrorAlert: React.FC<ErrorAlertProps> = ({
             </p>
           )}
           <span
+            role="button"
+            tabIndex={0}
             onClick={toggleDescription}
             style={{ textDecoration: 'underline', cursor: 'pointer' }}
           >
@@ -119,7 +121,9 @@ const ErrorAlert: React.FC<ErrorAlertProps> = ({
     return (
       <>
         <Tooltip title={`${errorType}: ${message}`}>
-          <span onClick={() => setShowModal(true)}>{renderTrigger()}</span>
+          <span role="button" onClick={() => setShowModal(true)} tabIndex={0}>
+            {renderTrigger()}
+          </span>
         </Tooltip>
         <Modal
           title={errorType}
