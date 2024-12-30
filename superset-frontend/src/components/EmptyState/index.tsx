@@ -19,11 +19,9 @@
 import { ReactNode, SyntheticEvent } from 'react';
 import { styled, css, SupersetTheme, t } from '@superset-ui/core';
 import Button from 'src/components/Button';
-import { Empty } from './Empty';
 
 // Importing svg images
 import FilterResultsImage from 'src/assets/images/filter-results.svg';
-import EmptyImage from 'src/assets/images/empty.svg';
 import ChartImage from 'src/assets/images/chart.svg';
 import FilterImage from 'src/assets/images/filter.svg';
 import EmptyChartsImage from 'src/assets/images/empty-charts.svg';
@@ -37,6 +35,8 @@ import DatasetImage from 'src/assets/images/empty-dataset.svg';
 import EmptySqlChartImage from 'src/assets/images/empty_sql_chart.svg';
 import EmptyQueryImage from 'src/assets/images/empty-query.svg';
 import EmptyTableImage from 'src/assets/images/empty-table.svg';
+import EmptyImage from 'src/assets/images/empty.svg';
+import { Empty } from './Empty';
 
 export const imageMap = {
   'chart.svg': <ChartImage />,
