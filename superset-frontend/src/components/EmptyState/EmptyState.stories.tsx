@@ -17,10 +17,9 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import React from 'react';
 import { Meta, StoryFn } from '@storybook/react';
 import { Row, Col } from 'antd';
-import { EmptyState } from './';
+import { EmptyState } from '.';
 
 const emptyStates = [
   {},

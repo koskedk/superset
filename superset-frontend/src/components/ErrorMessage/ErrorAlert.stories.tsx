@@ -1,4 +1,3 @@
-import React from 'react';
 import { Meta, StoryFn } from '@storybook/react';
 import { Layout, Row, Col, Card } from 'antd-v5';
 import { useTheme } from '@superset-ui/core';
@@ -47,7 +46,7 @@ export const Gallery: StoryFn = () => (
               errorType="Database Connection Error"
               type="warning"
               descriptionDetails={detailsExample}
-              descriptionDetailsCollapsed={true}
+              descriptionDetailsCollapsed
             />
           </ErrorCard>
         </Col>
@@ -58,8 +57,8 @@ export const Gallery: StoryFn = () => (
               message="SQL Syntax Error - No defaults set here"
               description={sqlErrorDescription}
               descriptionDetails={detailsExample}
-              descriptionDetailsCollapsed={true}
-              descriptionPre={true}
+              descriptionDetailsCollapsed
+              descriptionPre
             />
           </ErrorCard>
         </Col>
@@ -115,8 +114,8 @@ export const Gallery: StoryFn = () => (
               errorType="Error"
               message="Compact mode example"
               type="error"
-              compact={true}
-              descriptionDetailsCollapsed={true}
+              compact
+              descriptionDetailsCollapsed
               description={sqlErrorDescription}
               descriptionDetails={detailsExample}
             />
@@ -128,9 +127,9 @@ export const Gallery: StoryFn = () => (
               errorType="Warning"
               message="Compact mode example"
               type="warning"
-              compact={true}
+              compact
               descriptionDetails={detailsExample}
-              descriptionDetailsCollapsed={true}
+              descriptionDetailsCollapsed
             />
           </ErrorCard>
         </Col>

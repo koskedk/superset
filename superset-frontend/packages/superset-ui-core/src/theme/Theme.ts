@@ -114,9 +114,13 @@ type DenyList = string[];
 
 export default class Theme {
   private readonly systemColors: SystemColors;
+
   private readonly isDarkMode: boolean;
+
   private theme: SupersetTheme | null = null;
+
   private antdTheme: Record<string, any> | null = null;
+
   public antdConfig: ThemeConfig | undefined = undefined;
 
   private static readonly denyList: DenyList = [
@@ -136,10 +140,7 @@ export default class Theme {
     'orange.*',
   ];
 
-  constructor(
-    systemColors?: Partial<SystemColors>,
-    isDarkMode: boolean = false,
-  ) {
+  constructor(systemColors?: Partial<SystemColors>, isDarkMode = false) {
     this.isDarkMode = isDarkMode;
     this.systemColors = {
       primary: '#20a7c9',
@@ -170,7 +171,7 @@ export default class Theme {
   private adjustColor(
     color: string,
     percentage: number,
-    target: string = 'white',
+    target = 'white',
   ): string {
     return tinycolor.mix(color, target, percentage).toHexString();
   }
@@ -238,7 +239,7 @@ export default class Theme {
 
   private getSupersetTheme(
     systemColors: SystemColors,
-    isDarkTheme: boolean = false,
+    isDarkTheme = false,
   ): SupersetTheme {
     const colors = this.generateColors();
     let theme: SupersetTheme = {

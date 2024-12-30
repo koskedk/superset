@@ -19,8 +19,8 @@
 import emotionStyled from '@emotion/styled';
 import { useTheme as useThemeBasic } from '@emotion/react';
 import createCache from '@emotion/cache';
-import SupersetThemeClass from './Theme';
 import { ConfigProvider, type ConfigProviderProps } from 'antd-v5';
+import SupersetThemeClass from './Theme';
 
 export {
   css,

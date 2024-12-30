@@ -17,10 +17,9 @@
  * under the License.
  */
 
-import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import ErrorAlert from './ErrorAlert';
 import { t } from '@superset-ui/core';
+import ErrorAlert from './ErrorAlert';
 
 describe('ErrorAlert', () => {
   it('renders the error message correctly', () => {
@@ -58,7 +57,7 @@ describe('ErrorAlert', () => {
         message="Something went wrong"
         type="error"
         descriptionDetails={descriptionDetails}
-        descriptionDetailsCollapsed={true}
+        descriptionDetailsCollapsed
       />,
     );
 
@@ -79,7 +78,7 @@ describe('ErrorAlert', () => {
         errorType="Error"
         message="Compact mode example"
         type="error"
-        compact={true}
+        compact
         descriptionDetails="Detailed description in compact mode."
       />,
     );

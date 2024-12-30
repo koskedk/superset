@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Modal, Tooltip } from 'antd';
 import { ExclamationCircleOutlined, WarningOutlined } from '@ant-design/icons';
 import Alert from 'src/components/Alert';
@@ -70,46 +70,44 @@ const ErrorAlert: React.FC<ErrorAlertProps> = ({
     );
   };
 
-  const renderDescription = () => {
-    return (
-      <div>
-        {description && (
-          <p
-            style={{
-              whiteSpace: 'pre-wrap',
-              fontFamily: theme.antd.fontFamilyCode,
-            }}
-          >
-            {description}
-          </p>
-        )}
-        {descriptionDetails && (
-          <div>
-            {isDescriptionVisible && (
-              <p
-                style={
-                  descriptionPre
-                    ? {
-                        whiteSpace: 'pre-wrap',
-                        fontFamily: theme.antd.fontFamilyCode,
-                      }
-                    : {}
-                }
-              >
-                {descriptionDetails}
-              </p>
-            )}
-            <span
-              onClick={toggleDescription}
-              style={{ textDecoration: 'underline', cursor: 'pointer' }}
+  const renderDescription = () => (
+    <div>
+      {description && (
+        <p
+          style={{
+            whiteSpace: 'pre-wrap',
+            fontFamily: theme.antd.fontFamilyCode,
+          }}
+        >
+          {description}
+        </p>
+      )}
+      {descriptionDetails && (
+        <div>
+          {isDescriptionVisible && (
+            <p
+              style={
+                descriptionPre
+                  ? {
+                      whiteSpace: 'pre-wrap',
+                      fontFamily: theme.antd.fontFamilyCode,
+                    }
+                  : {}
+              }
             >
-              {isDescriptionVisible ? t('Show less') : t('Show more')}
-            </span>
-          </div>
-        )}
-      </div>
-    );
-  };
+              {descriptionDetails}
+            </p>
+          )}
+          <span
+            onClick={toggleDescription}
+            style={{ textDecoration: 'underline', cursor: 'pointer' }}
+          >
+            {isDescriptionVisible ? t('Show less') : t('Show more')}
+          </span>
+        </div>
+      )}
+    </div>
+  );
 
   const renderAlert = () => (
     <Alert description={renderDescription()} type={type}>

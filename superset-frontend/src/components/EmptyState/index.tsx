@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import React, { ReactNode, SyntheticEvent } from 'react';
+import { ReactNode, SyntheticEvent } from 'react';
 import { styled, css, SupersetTheme, t } from '@superset-ui/core';
 import Button from 'src/components/Button';
 import { Empty } from './Empty';

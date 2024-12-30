@@ -18,8 +18,11 @@
  */
 
 import { Route } from 'react-router-dom';
-import { getExtensionsRegistry } from '@superset-ui/core';
-import { ThemeProvider, AntdThemeProvider } from '@superset-ui/core';
+import {
+  getExtensionsRegistry,
+  ThemeProvider,
+  AntdThemeProvider,
+} from '@superset-ui/core';
 import { Provider as ReduxProvider } from 'react-redux';
 import { QueryParamProvider } from 'use-query-params';
 import { DndProvider } from 'react-dnd';
