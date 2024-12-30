@@ -20,8 +20,7 @@ import { ReactNode, ReactElement } from 'react';
 import { css, SupersetTheme, t, useTheme } from '@superset-ui/core';
 import { AntdDropdown, AntdDropdownProps } from 'src/components';
 import { TooltipPlacement } from 'src/components/Tooltip';
-import {
-  DynamicEditableTitle,
+import DynamicEditableTitle, {
   DynamicEditableTitleProps,
 } from '../DynamicEditableTitle';
 import CertifiedBadge, { CertifiedBadgeProps } from '../CertifiedBadge';
