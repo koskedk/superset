@@ -18,12 +18,12 @@
  */
 
 import { render, screen, fireEvent } from '@testing-library/react';
-import { t } from '@superset-ui/core';
 import ErrorAlert from './ErrorAlert';
+import { renderWithTheme } from 'src/utils/testUtils';
 
 describe('ErrorAlert', () => {
   it('renders the error message correctly', () => {
-    render(
+    renderWithTheme(
       <ErrorAlert
         errorType="Error"
         message="Something went wrong"
@@ -31,13 +31,13 @@ describe('ErrorAlert', () => {
       />,
     );
 
-    expect(screen.getByText('Error:')).toBeInTheDocument();
+    expect(screen.getByText('Error')).toBeInTheDocument();
     expect(screen.getByText('Something went wrong')).toBeInTheDocument();
   });
 
   it('renders the description when provided', () => {
     const description = 'This is a detailed description';
-    render(
+    renderWithTheme(
       <ErrorAlert
         errorType="Error"
         message="Something went wrong"
@@ -51,7 +51,7 @@ describe('ErrorAlert', () => {
 
   it('toggles description details visibility when show more/less is clicked', () => {
     const descriptionDetails = 'Additional details about the error.';
-    render(
+    renderWithTheme(
       <ErrorAlert
         errorType="Error"
         message="Something went wrong"
@@ -61,19 +61,19 @@ describe('ErrorAlert', () => {
       />,
     );
 
-    const showMoreButton = screen.getByText(t('Show more'));
-    expect(showMoreButton).toBeInTheDocument();
+    const showMoreButton = screen.getByText('See more');
+    expect(showMoreButton).not.toBeNull();
 
     fireEvent.click(showMoreButton);
-    expect(screen.getByText(descriptionDetails)).toBeInTheDocument();
+    expect(screen.getByText(descriptionDetails)).not.toBeNull();
 
-    const showLessButton = screen.getByText(t('Show less'));
+    const showLessButton = screen.getByText('See less');
     fireEvent.click(showLessButton);
-    expect(screen.queryByText(descriptionDetails)).not.toBeInTheDocument();
+    expect(screen.queryByText(descriptionDetails)).toBeNull();
   });
 
   it('renders compact mode with a tooltip and modal', () => {
-    render(
+    renderWithTheme(
       <ErrorAlert
         errorType="Error"
         message="Compact mode example"
@@ -84,7 +84,7 @@ describe('ErrorAlert', () => {
     );
 
     const iconTrigger = screen.getByText('Error');
-    expect(iconTrigger).toBeInTheDocument();
+    expect(iconTrigger).not.toBeNull();
 
     fireEvent.click(iconTrigger);
     expect(screen.getByText('Compact mode example')).toBeInTheDocument();

@@ -104,7 +104,7 @@ const ErrorAlert: React.FC<ErrorAlertProps> = ({
             onClick={toggleDescription}
             style={{ textDecoration: 'underline', cursor: 'pointer' }}
           >
-            {isDescriptionVisible ? t('Show less') : t('Show more')}
+            {isDescriptionVisible ? t('See less') : t('See more')}
           </span>
         </div>
       )}
@@ -113,7 +113,12 @@ const ErrorAlert: React.FC<ErrorAlertProps> = ({
 
   const renderAlert = () => (
     <Alert description={renderDescription()} type={type}>
-      <strong>{errorType}: </strong> {message}
+      <strong>{errorType}</strong>
+      {message && (
+        <>
+          : <span>{message}</span>
+        </>
+      )}
     </Alert>
   );
 

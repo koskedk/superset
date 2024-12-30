@@ -16,9 +16,14 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { JsonObject } from '@superset-ui/core';
+import { ThemeProvider, supersetTheme, JsonObject } from '@superset-ui/core';
+import { render } from '@testing-library/react';
+import '@testing-library/jest-dom';
 
 type TestWithIdType<T> = T extends string ? string : { 'data-test': string };
+
+export const renderWithTheme = (component: JSX.Element) =>
+  render(<ThemeProvider theme={supersetTheme}>{component}</ThemeProvider>);
 
 // Using bem standard
 export const testWithId =

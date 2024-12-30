@@ -27,7 +27,6 @@ function DatasetNotFoundErrorMessage({
   subtitle,
 }: ErrorMessageComponentProps) {
   const { level, message } = error;
-  console.log('YOYO', level, message);
   return (
     <ErrorAlert
       errorType={t('Missing dataset')}

@@ -147,11 +147,13 @@ const ImageContainer = ({
   if (!image) return null;
   const mappedImage = typeof image === 'string' ? imageMap[image] : image;
   return (
-    <Empty
-      description={false}
-      image={mappedImage}
-      imageStyle={getImageHeight(size)}
-    />
+    <div role="img" aria-label="empty">
+      <Empty
+        description={false}
+        image={mappedImage}
+        imageStyle={getImageHeight(size)}
+      />
+    </div>
   );
 };
 
