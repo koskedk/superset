@@ -32,15 +32,15 @@ describe('AddDataset', () => {
   it('renders a blank state AddDataset', async () => {
     render(<AddDataset />, { useRedux: true, useRouter: true });
 
-    const blankeStateImgs = screen.getAllByRole('img', { name: /empty/i });
+    const svg = screen.getAllByRole('svg');
 
     // Header
     expect(await screen.findByText(/new dataset/i)).toBeVisible();
     // Left panel
-    expect(blankeStateImgs[0]).toBeVisible();
+    expect(svg[0]).toBeVisible();
     // Footer
     expect(screen.getByText(/Cancel/i)).toBeVisible();
 
-    expect(blankeStateImgs.length).toBe(1);
+    expect(svg.length).toBe(1);
   });
 });

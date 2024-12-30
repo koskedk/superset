@@ -19,8 +19,8 @@
  */
 import { Meta, StoryFn } from '@storybook/react';
 import { Row, Col } from 'antd';
-import { EmptyState } from '.';
-
+import { EmptyState, imageMap } from '.';
+/*
 const emptyStates = [
   {},
   {
@@ -58,6 +58,15 @@ const emptyStates = [
     description: 'No queries saved yet.',
     image: 'empty-queries.svg',
   },
+];o
+ */
+const emptyStates = [
+  {},
+  ...Object.keys(imageMap).map(key => ({
+    image: key,
+    title: `Empty State with image ${key}`,
+    description: 'This is the default empty state.',
+  })),
 ];
 
 export default {

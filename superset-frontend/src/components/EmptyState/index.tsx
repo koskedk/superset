@@ -19,6 +19,7 @@
 import { ReactNode, SyntheticEvent } from 'react';
 import { styled, css, SupersetTheme, t } from '@superset-ui/core';
 import Button from 'src/components/Button';
+import { Empty } from './Empty';
 
 // Importing svg images
 import FilterResultsImage from 'src/assets/images/filter-results.svg';
@@ -32,20 +33,28 @@ import EmptyQueriesImage from 'src/assets/images/empty-queries.svg';
 import StarCircleImage from 'src/assets/images/star-circle.svg';
 import VectorImage from 'src/assets/images/vector.svg';
 import DocumentImage from 'src/assets/images/document.svg';
-import { Empty } from './Empty';
+import DatasetImage from 'src/assets/images/empty-dataset.svg';
+import EmptySqlChartImage from 'src/assets/images/empty_sql_chart.svg';
+import EmptyQueryImage from 'src/assets/images/empty-query.svg';
+import EmptyTableImage from 'src/assets/images/empty-table.svg';
 
-const imageMap = {
-  'filter-results.svg': <FilterResultsImage />,
-  'empty.svg': <EmptyImage />,
+export const imageMap = {
   'chart.svg': <ChartImage />,
-  'filter.svg': <FilterImage />,
+  'document.svg': <DocumentImage />,
+  'empty.svg': <EmptyImage />,
   'empty-charts.svg': <EmptyChartsImage />,
   'empty-dashboard.svg': <EmptyDashboardImage />,
-  'union.svg': <UnionImage />,
+  'empty-dataset.svg': <DatasetImage />,
   'empty-queries.svg': <EmptyQueriesImage />,
+  'empty.svg': <EmptyImage />,
+  'filter-results.svg': <FilterResultsImage />,
+  'filter.svg': <FilterImage />,
   'star-circle.svg': <StarCircleImage />,
+  'union.svg': <UnionImage />,
   'vector.svg': <VectorImage />,
-  'document.svg': <DocumentImage />,
+  'empty_sql_chart.svg': <EmptySqlChartImage />,
+  'empty-query.svg': <EmptyQueryImage />,
+  'empty-table.svg': <EmptyTableImage />,
 };
 
 type EmptyStateSize = 'small' | 'medium' | 'large';
