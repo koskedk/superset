@@ -210,6 +210,7 @@ module.exports = {
         '*.test.tsx',
         '*.test.js',
         '*.test.jsx',
+        '*src/utils/testUtils*',
         '*.stories.tsx',
         '*.stories.jsx',
         'fixtures.*',
