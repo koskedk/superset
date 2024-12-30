@@ -9,118 +9,90 @@
  *
  *   http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an
  * "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS
  * OF ANY KIND, either express or implied.  See the License for the
  * specific language governing permissions and limitations
  * under the License.
  */
-
 import React from 'react';
-import { Card, Row, Col } from 'antd';
-
-import EmptyImage from 'src/assets/images/empty.svg';
-import ChartImage from 'src/assets/images/chart.svg';
-import FilterImage from 'src/assets/images/filter.svg';
-import EmptyChartsImage from 'src/assets/images/empty-charts.svg';
-import EmptyDashboardImage from 'src/assets/images/empty-dashboard.svg';
-import UnionImage from 'src/assets/images/union.svg';
-import EmptyQueriesImage from 'src/assets/images/empty-queries.svg';
-
-import { EmptyStateSmall, EmptyStateMedium, EmptyStateBig } from './';
-
-export default {
-  title: 'Empty State Gallery',
-  component: EmptyStateMedium,
-  argTypes: {
-    containerColor: {
-      control: 'color',
-      description: 'Background color of the container',
-      defaultValue: 'white',
-    },
-    size: {
-      control: { type: 'select' },
-      options: ['small', 'medium', 'big'],
-      defaultValue: 'medium',
-      description: 'Size of the Empty State components',
-    },
-  },
-};
+import { Meta, StoryFn } from '@storybook/react';
+import { Row, Col } from 'antd';
+import { EmptyState } from './';
 
 const emptyStates = [
+  {},
   {
     title: 'Empty State',
     description: 'This is the default empty state.',
-    image: <EmptyImage />,
+    image: 'empty.svg',
   },
   {
     title: 'Chart Empty State',
     description: 'No charts available at the moment.',
-    image: <ChartImage />,
+    image: 'chart.svg',
   },
   {
     title: 'Filter Empty State',
     description: 'No filters available at the moment.',
-    image: <FilterImage />,
+    image: 'filter.svg',
   },
   {
     title: 'Empty Charts',
     description: 'No charts available.',
-    image: <EmptyChartsImage />,
+    image: 'empty-charts.svg',
   },
   {
     title: 'Empty Dashboard',
     description: 'No dashboards available.',
-    image: <EmptyDashboardImage />,
+    image: 'empty-dashboard.svg',
   },
   {
     title: 'Recents',
     description: 'No recent items found.',
-    image: <UnionImage />,
+    image: 'union.svg',
   },
   {
     title: 'Empty Queries',
     description: 'No queries saved yet.',
-    image: <EmptyQueriesImage />,
+    image: 'empty-queries.svg',
   },
 ];
 
-export const Gallery = ({ containerColor, size }) => {
-  const getComponentBySize = () => {
-    switch (size) {
-      case 'small':
-        return EmptyStateSmall;
-      case 'big':
-        return EmptyStateBig;
-      default:
-        return EmptyStateMedium;
-    }
-  };
+export default {
+  title: 'Empty State Gallery',
+  component: EmptyState,
+  argTypes: {
+    size: {
+      control: { type: 'select' },
+      options: ['small', 'medium', 'large'],
+      defaultValue: 'medium',
+      description: 'Size of the Empty State components',
+    },
+  },
+} as Meta;
 
-  const SelectedEmptyState = getComponentBySize();
-
-  return (
-    <Row gutter={[16, 16]}>
-      {emptyStates.map((state, index) => (
-        <Col key={index} xs={24} sm={12} md={8} lg={6}>
-          <Card title={state.title} hoverable style={{ textAlign: 'center' }}>
-            <div style={{ color: containerColor, padding: 16 }}>
-              <SelectedEmptyState
-                image={state.image}
-                title={state.title}
-                description={state.description}
-              />
-            </div>
-          </Card>
-        </Col>
-      ))}
-    </Row>
-  );
-};
+export const Gallery: StoryFn<{ size: 'small' | 'medium' | 'large' }> = ({
+  size,
+}) => (
+  <Row gutter={[16, 16]}>
+    {emptyStates.map((state, index) => (
+      <Col key={index} xs={24} sm={12} md={8} lg={6}>
+        <EmptyState
+          size={size}
+          title={state.title}
+          description={state.description}
+          image={state.image}
+        >
+          Childrens render here.
+        </EmptyState>
+      </Col>
+    ))}
+  </Row>
+);
 
 Gallery.args = {
-  containerColor: 'white', // Default background color
-  size: 'medium', // Default size
+  size: 'medium',
 };

@@ -106,6 +106,10 @@ interface SupersetTheme {
   brandIconMaxWidth: number;
 }
 
+interface EmotionSupersetTheme extends SupersetTheme {
+  antd: Record<string, any>;
+}
+
 type DenyList = string[];
 
 export default class Theme {
@@ -153,7 +157,10 @@ export default class Theme {
     this.setAntdThemeFromTheme();
   }
 
-  getTheme(): Record<string, any> {
+  getTheme(): EmotionSupersetTheme {
+    if (!this.theme) {
+      throw new Error('Theme is not initialized.');
+    }
     return {
       ...this.theme,
       antd: this.getFilteredAntdTheme(),

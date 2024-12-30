@@ -69,13 +69,11 @@ export default function ErrorMessageWithStackTrace({
 
   return (
     <ErrorAlert
-      level="warning"
-      title={title}
-      subtitle={subtitle}
-      copyText={copyText}
+      type="warning"
+      errorType={title}
+      message={subtitle}
       description={description}
-      source={source}
-      body={
+      descriptionDetails={
         link || stackTrace ? (
           <>
             {link && (

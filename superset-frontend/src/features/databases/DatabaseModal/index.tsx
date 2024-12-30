@@ -47,7 +47,7 @@ import InfoTooltip from 'src/components/InfoTooltip';
 import withToasts from 'src/components/MessageToasts/withToasts';
 import ValidatedInput from 'src/components/Form/LabeledErrorBoundInput';
 import ErrorMessageWithStackTrace from 'src/components/ErrorMessage/ErrorMessageWithStackTrace';
-import ErrorAlert from 'src/components/ImportModal/ErrorAlert';
+import ImportErrorAlert from 'src/components/ImportModal/ImportErrorAlert';
 import {
   testDatabaseConnection,
   useSingleViewResource,
@@ -1481,7 +1481,7 @@ const DatabaseModal: FunctionComponent<DatabaseModalProps> = ({
 
     return (
       <StyledAlertMargin>
-        <ErrorAlert
+        <ImportErrorAlert
           errorMessage={importingErrorMessage}
           showDbInstallInstructions={passwordFields.length > 0}
         />

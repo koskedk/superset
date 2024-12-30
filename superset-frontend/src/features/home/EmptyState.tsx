@@ -133,6 +133,7 @@ export default function EmptyState({
       <EmptyContainer>
         <EmptyStateComponent
           image={tableIcon[tableName]}
+          size="large"
           description={
             tableName === WelcomeTable.Recents || tab === TableTab.Other
               ? recent

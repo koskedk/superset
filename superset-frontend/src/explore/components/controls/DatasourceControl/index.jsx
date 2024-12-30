@@ -429,10 +429,10 @@ class DatasourceControl extends PureComponent {
         {isMissingDatasource && isMissingParams && (
           <div className="error-alert">
             <ErrorAlert
-              level="warning"
-              title={t('Missing URL parameters')}
-              source="explore"
-              subtitle={
+              type="warning"
+              descriptionPre={false}
+              message={t('Missing URL parameters')}
+              description={
                 <>
                   <p>
                     {t(
@@ -447,10 +447,10 @@ class DatasourceControl extends PureComponent {
         {isMissingDatasource && !isMissingParams && (
           <div className="error-alert">
             <ErrorAlert
-              level="warning"
-              title={t('Missing dataset')}
-              source="explore"
-              subtitle={
+              type="warning"
+              message={t('Missing dataset')}
+              descriptionPre={false}
+              descriptionDetails={
                 <>
                   <p>
                     {t(
@@ -459,7 +459,7 @@ class DatasourceControl extends PureComponent {
                   </p>
                   <p>
                     <Button
-                      buttonStyle="primary"
+                      buttonStyle="warning"
                       onClick={() =>
                         this.handleMenuItemClick({ key: CHANGE_DATASET })
                       }

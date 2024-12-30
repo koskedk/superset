@@ -50,11 +50,10 @@ function InvalidSQLErrorMessage({
 
   return (
     <ErrorAlert
-      title={t('Unable to parse SQL')}
-      subtitle={subtitle}
-      level={level}
-      source={source}
-      body={body}
+      errorType={t('Unable to parse SQL')}
+      message={subtitle}
+      type={level}
+      description={body}
     />
   );
 }
