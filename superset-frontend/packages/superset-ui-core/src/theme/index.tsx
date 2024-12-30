@@ -20,7 +20,7 @@ import emotionStyled from '@emotion/styled';
 import { useTheme as useThemeBasic } from '@emotion/react';
 import createCache from '@emotion/cache';
 import { ConfigProvider, type ConfigProviderProps } from 'antd-v5';
-import SupersetThemeClass from './Theme';
+import { Theme as SupersetThemeClass, SupersetTheme } from './Theme';
 
 export {
   css,
@@ -34,7 +34,7 @@ export { default as createEmotionCache } from '@emotion/cache';
 
 declare module '@emotion/react' {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
-  export interface Theme extends SupersetTheme {}
+  export interface Theme extends ReturnType<typeof themeObject.getTheme> {}
 }
 
 export function useTheme() {
@@ -55,15 +55,12 @@ export const emotionCache = createCache({
 export const styled = emotionStyled;
 const themeObject = new SupersetThemeClass({}, true);
 
-export const theme = themeObject.getTheme();
-export const supersetTheme = theme;
+export const theme: SupersetTheme = themeObject.getTheme();
+export const supersetTheme: SupersetTheme = theme;
 
 export const AntdThemeProvider = ({ theme, children }: ConfigProviderProps) => (
   <ConfigProvider theme={themeObject.antdConfig} prefixCls="antd5">
     {children}
   </ConfigProvider>
 );
-export type SupersetTheme = typeof supersetTheme;
-export interface SupersetThemeProps {
-  theme: SupersetTheme;
-}
+export { SupersetTheme, SupersetThemeClass };

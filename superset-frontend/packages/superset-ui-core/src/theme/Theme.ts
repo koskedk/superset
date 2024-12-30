@@ -48,7 +48,7 @@ interface ThemeColors {
   dark5: string;
 }
 
-interface SupersetTheme {
+interface LegacySupersetTheme {
   borderRadius: number;
   body: {
     backgroundColor: string;
@@ -108,38 +108,38 @@ interface SupersetTheme {
   brandIconMaxWidth: number;
 }
 
-interface EmotionSupersetTheme extends SupersetTheme {
+// Augmenting the LegacySupersetTheme with the antd tokens
+// goal is to fully move to antd tokens and remove the LegacySupersetTheme
+export interface SupersetTheme extends LegacySupersetTheme {
   antd: Record<string, any>;
 }
 
-type DenyList = string[];
-
-export default class Theme {
+export class Theme {
   private readonly systemColors: SystemColors;
 
   private readonly isDarkMode: boolean;
 
-  private theme: SupersetTheme | null = null;
+  private theme: LegacySupersetTheme | null = null;
 
   private antdTheme: Record<string, any> | null = null;
 
   public antdConfig: ThemeConfig | undefined = undefined;
 
-  private static readonly denyList: DenyList = [
-    'purple.*',
-    'dragon.*',
-    'geekblue.*',
-    'magenta.*',
-    'volcano.*',
-    'gold.*',
-    'lime.*',
-    'cyan.*',
-    'blue.*',
-    'green.*',
-    'red.*',
-    'yellow.*',
-    'pink.*',
-    'orange.*',
+  private static readonly denyList: RegExp[] = [
+    /purple.*/,
+    /dragon.*/,
+    /geekblue.*/,
+    /magenta.*/,
+    /volcano.*/,
+    /gold.*/,
+    /lime.*/,
+    /cyan.*/,
+    /blue.*/,
+    /green.*/,
+    /red.*/,
+    /yellow.*/,
+    /pink.*/,
+    /orange.*/,
   ];
 
   constructor(systemColors?: Partial<SystemColors>, isDarkMode = false) {
@@ -160,7 +160,7 @@ export default class Theme {
     this.setAntdThemeFromTheme();
   }
 
-  getTheme(): EmotionSupersetTheme {
+  getTheme(): SupersetTheme {
     if (!this.theme) {
       throw new Error('Theme is not initialized.');
     }
@@ -194,7 +194,7 @@ export default class Theme {
     };
   }
 
-  private makeThemeDark(theme: SupersetTheme): SupersetTheme {
+  private makeThemeDark(theme: LegacySupersetTheme): LegacySupersetTheme {
     const darkTheme = { ...theme };
     darkTheme.colors = { ...theme.colors };
 
@@ -239,12 +239,12 @@ export default class Theme {
     return colors;
   }
 
-  private getSupersetTheme(
+  private getLegacySupersetTheme(
     systemColors: SystemColors,
     isDarkTheme = false,
-  ): SupersetTheme {
+  ): LegacySupersetTheme {
     const colors = this.generateColors();
-    let theme: SupersetTheme = {
+    let theme: LegacySupersetTheme = {
       borderRadius: 4,
       body: {
         backgroundColor: '#FFF',
@@ -417,8 +417,8 @@ export default class Theme {
           lineHeight: 1.6,
         },
       },
-		}
-		*/
+    }
+    */
     };
   }
 
@@ -427,7 +427,7 @@ export default class Theme {
     const filteredTheme: Record<string, any> = {};
 
     Object.entries(theme).forEach(([key, value]) => {
-      if (!Theme.denyList.some(deny => new RegExp(deny).test(key))) {
+      if (!Theme.denyList.some(deny => deny.test(key))) {
         filteredTheme[key] = value;
       }
     });
@@ -439,7 +439,7 @@ export default class Theme {
     systemColors: SystemColors,
     isDarkMode: boolean,
   ): void {
-    this.theme = this.getSupersetTheme(systemColors, isDarkMode);
+    this.theme = this.getLegacySupersetTheme(systemColors, isDarkMode);
   }
 
   private setAntdThemeFromTheme(): void {

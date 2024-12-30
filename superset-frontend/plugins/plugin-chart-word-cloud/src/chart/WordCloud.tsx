@@ -26,7 +26,7 @@ import {
   Encoder,
 } from 'encodable';
 import {
-  SupersetThemeProps,
+  SupersetTheme,
   withTheme,
   seed,
   CategoricalColorNamespace,
@@ -80,8 +80,7 @@ const defaultProps: Required<WordCloudVisualProps> = {
 };
 
 type FullWordCloudProps = WordCloudProps &
-  typeof defaultProps &
-  SupersetThemeProps;
+  typeof defaultProps & { theme: SupersetTheme };
 
 const SCALE_FACTOR_STEP = 0.5;
 const MAX_SCALE_FACTOR = 3;
