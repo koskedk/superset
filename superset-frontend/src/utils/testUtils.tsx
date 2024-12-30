@@ -25,7 +25,7 @@ type TestWithIdType<T> = T extends string ? string : { 'data-test': string };
 export const renderWithTheme = (component: JSX.Element) =>
   render(<ThemeProvider theme={supersetTheme}>{component}</ThemeProvider>);
 
-// Using bem standard
+// using bem standard
 export const testWithId =
   <T extends string | JsonObject = JsonObject>(
     prefix?: string,

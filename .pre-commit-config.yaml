@@ -77,3 +77,12 @@ repos:
       - id: ruff
         args: [ --fix ]
       - id: ruff-format
+
+  - repo: local
+    hooks:
+      - id: eslint
+        name: Run Custom Linter
+        entry: bash -c 'cd superset-frontend && npm run eslint -- --fix '
+        language: system
+        pass_filenames: true
+        files: \.(js|jsx|ts|tsx)$

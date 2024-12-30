@@ -18,8 +18,8 @@
  */
 
 import { render, screen, fireEvent } from '@testing-library/react';
-import ErrorAlert from './ErrorAlert';
 import { renderWithTheme } from 'src/utils/testUtils';
+import ErrorAlert from './ErrorAlert';
 
 describe('ErrorAlert', () => {
   it('renders the error message correctly', () => {
@@ -62,14 +62,14 @@ describe('ErrorAlert', () => {
     );
 
     const showMoreButton = screen.getByText('See more');
-    expect(showMoreButton).not.toBeNull();
+    expect(showMoreButton).toBeInTheDocument();
 
     fireEvent.click(showMoreButton);
-    expect(screen.getByText(descriptionDetails)).not.toBeNull();
+    expect(screen.getByText(descriptionDetails)).toBeInTheDocument();
 
     const showLessButton = screen.getByText('See less');
     fireEvent.click(showLessButton);
-    expect(screen.queryByText(descriptionDetails)).toBeNull();
+    expect(screen.queryByText(descriptionDetails)).not.toBeInTheDocument();
   });
 
   it('renders compact mode with a tooltip and modal', () => {
@@ -84,7 +84,7 @@ describe('ErrorAlert', () => {
     );
 
     const iconTrigger = screen.getByText('Error');
-    expect(iconTrigger).not.toBeNull();
+    expect(iconTrigger).toBeInTheDocument();
 
     fireEvent.click(iconTrigger);
     expect(screen.getByText('Compact mode example')).toBeInTheDocument();
