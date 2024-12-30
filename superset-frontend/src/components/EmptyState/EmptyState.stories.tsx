@@ -20,48 +20,9 @@
 import { Meta, StoryFn } from '@storybook/react';
 import { Row, Col } from 'antd';
 import { EmptyState, imageMap } from '.';
-/*
+
 const emptyStates = [
-  {},
-  {
-    title: 'Empty State',
-    description: 'This is the default empty state.',
-    image: 'empty.svg',
-  },
-  {
-    title: 'Chart Empty State',
-    description: 'No charts available at the moment.',
-    image: 'chart.svg',
-  },
-  {
-    title: 'Filter Empty State',
-    description: 'No filters available at the moment.',
-    image: 'filter.svg',
-  },
-  {
-    title: 'Empty Charts',
-    description: 'No charts available.',
-    image: 'empty-charts.svg',
-  },
-  {
-    title: 'Empty Dashboard',
-    description: 'No dashboards available.',
-    image: 'empty-dashboard.svg',
-  },
-  {
-    title: 'Recents',
-    description: 'No recent items found.',
-    image: 'union.svg',
-  },
-  {
-    title: 'Empty Queries',
-    description: 'No queries saved yet.',
-    image: 'empty-queries.svg',
-  },
-];o
- */
-const emptyStates = [
-  {},
+  { title: null, description: null, image: null },
   ...Object.keys(imageMap).map(key => ({
     image: key,
     title: `Empty State with image ${key}`,

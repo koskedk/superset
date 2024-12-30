@@ -23,7 +23,6 @@ import ErrorAlert from './ErrorAlert';
 
 function DatasetNotFoundErrorMessage({
   error,
-  source = 'dashboard',
   subtitle,
 }: ErrorMessageComponentProps) {
   const { level, message } = error;
@@ -31,6 +30,7 @@ function DatasetNotFoundErrorMessage({
     <ErrorAlert
       errorType={t('Missing dataset')}
       message={subtitle}
+      description={message}
       type={level}
     />
   );

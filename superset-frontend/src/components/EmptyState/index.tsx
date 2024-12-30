@@ -41,20 +41,19 @@ import { Empty } from './Empty';
 export const imageMap = {
   'chart.svg': <ChartImage />,
   'document.svg': <DocumentImage />,
-  'empty.svg': <EmptyImage />,
   'empty-charts.svg': <EmptyChartsImage />,
   'empty-dashboard.svg': <EmptyDashboardImage />,
   'empty-dataset.svg': <DatasetImage />,
   'empty-queries.svg': <EmptyQueriesImage />,
+  'empty-query.svg': <EmptyQueryImage />,
+  'empty-table.svg': <EmptyTableImage />,
   'empty.svg': <EmptyImage />,
+  'empty_sql_chart.svg': <EmptySqlChartImage />,
   'filter-results.svg': <FilterResultsImage />,
   'filter.svg': <FilterImage />,
   'star-circle.svg': <StarCircleImage />,
   'union.svg': <UnionImage />,
   'vector.svg': <VectorImage />,
-  'empty_sql_chart.svg': <EmptySqlChartImage />,
-  'empty-query.svg': <EmptyQueryImage />,
-  'empty-table.svg': <EmptyTableImage />,
 };
 
 type EmptyStateSize = 'small' | 'medium' | 'large';

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { render, screen, fireEvent } from '@testing-library/react';
+import { screen, fireEvent } from '@testing-library/react';
 import { renderWithTheme } from 'src/utils/testUtils';
 import ErrorAlert from './ErrorAlert';
 
