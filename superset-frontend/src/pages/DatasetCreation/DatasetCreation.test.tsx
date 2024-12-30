@@ -30,17 +30,21 @@ jest.mock('react-router-dom', () => ({
 
 describe('AddDataset', () => {
   it('renders a blank state AddDataset', async () => {
-    render(<AddDataset />, { useRedux: true, useRouter: true });
+    const { container } = render(<AddDataset />, {
+      useRedux: true,
+      useRouter: true,
+    });
 
-    const svg = screen.getAllByRole('svg');
+    // Query the SVG using container.querySelector
+    const svg = container.querySelector('svg');
 
     // Header
     expect(await screen.findByText(/new dataset/i)).toBeVisible();
     // Left panel
-    expect(svg[0]).toBeVisible();
+    expect(svg).toBeVisible();
     // Footer
     expect(screen.getByText(/Cancel/i)).toBeVisible();
 
-    expect(svg.length).toBe(1);
+    expect(container.querySelectorAll('svg').length).toBe(1);
   });
 });
