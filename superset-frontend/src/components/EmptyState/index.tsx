@@ -19,7 +19,6 @@
 import { ReactNode, SyntheticEvent } from 'react';
 import { styled, css, SupersetTheme, t } from '@superset-ui/core';
 import Button from 'src/components/Button';
-import { Empty } from './Empty';
 
 // Importing svg images
 import FilterResultsImage from 'src/assets/images/filter-results.svg';
@@ -33,6 +32,7 @@ import EmptyQueriesImage from 'src/assets/images/empty-queries.svg';
 import StarCircleImage from 'src/assets/images/star-circle.svg';
 import VectorImage from 'src/assets/images/vector.svg';
 import DocumentImage from 'src/assets/images/document.svg';
+import { Empty } from './Empty';
 
 const imageMap = {
   'filter-results.svg': <FilterResultsImage />,

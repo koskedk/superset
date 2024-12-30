@@ -30,9 +30,6 @@ This is useful for verbose error messages.`;
 const sqlErrorDescription = `SQL Error: Syntax error near unexpected token.
 Please check your query and ensure it follows the correct syntax.`;
 
-const dbConnectionError = `Database Connection Error: Unable to establish a connection.
-Please verify your database URL, credentials, and network access.`;
-
 const detailsExample = `Additional details about the issue are provided here.
 This content is shown when the user clicks "Show more".`;
 
@@ -63,6 +60,7 @@ export const Gallery: StoryFn = () => (
             <ErrorAlert
               errorType="Database Connection Error"
               type="warning"
+              message="Failed to connect to database"
               descriptionDetails={detailsExample}
               descriptionDetailsCollapsed
             />
