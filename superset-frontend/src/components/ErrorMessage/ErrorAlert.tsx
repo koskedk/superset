@@ -69,34 +69,19 @@ const ErrorAlert: React.FC<ErrorAlertProps> = ({
       </div>
     );
   };
-
+  const preStyle = {
+    whiteSpace: 'pre-wrap',
+    fontFamily: theme.antd.fontFamilyCode,
+  };
   const renderDescription = () => (
     <div>
       {description && (
-        <p
-          style={{
-            whiteSpace: 'pre-wrap',
-            fontFamily: theme.antd.fontFamilyCode,
-          }}
-        >
-          {description}
-        </p>
+        <p style={descriptionPre ? preStyle : {}}>{description}</p>
       )}
       {descriptionDetails && (
         <div>
           {isDescriptionVisible && (
-            <p
-              style={
-                descriptionPre
-                  ? {
-                      whiteSpace: 'pre-wrap',
-                      fontFamily: theme.antd.fontFamilyCode,
-                    }
-                  : {}
-              }
-            >
-              {descriptionDetails}
-            </p>
+            <p style={descriptionPre ? preStyle : {}}>{descriptionDetails}</p>
           )}
           <span
             role="button"

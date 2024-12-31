@@ -110,9 +110,9 @@ function ParameterErrorMessage({
   return (
     <ErrorAlert
       errorType={t('Parameter error')}
+      type={level}
       message={message}
       description={subtitle}
-      type={level}
       descriptionDetails={body}
     />
   );

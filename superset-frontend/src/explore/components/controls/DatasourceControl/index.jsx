@@ -448,8 +448,9 @@ class DatasourceControl extends PureComponent {
           <div className="error-alert">
             <ErrorAlert
               type="warning"
-              message={t('Missing dataset')}
+              errorType={t('Missing dataset')}
               descriptionPre={false}
+              descriptionDetailsCollapsed={false}
               descriptionDetails={
                 <>
                   <p>

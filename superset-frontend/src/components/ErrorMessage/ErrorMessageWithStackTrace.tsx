@@ -66,7 +66,6 @@ export default function ErrorMessageWithStackTrace({
   if (fallback) {
     return <>{fallback}</>;
   }
-
   return (
     <ErrorAlert
       type="warning"
