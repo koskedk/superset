@@ -22,7 +22,7 @@ import { Row, Col } from 'antd';
 import { EmptyState, imageMap } from '.';
 
 const emptyStates = [
-  { title: null, description: null, image: null },
+  { title: null, description: null, image: undefined },
   ...Object.keys(imageMap).map(key => ({
     image: key,
     title: `Empty State with image ${key}`,
