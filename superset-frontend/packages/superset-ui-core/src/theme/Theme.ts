@@ -23,6 +23,69 @@ import type { ThemeConfig } from 'antd-v5';
 
 /* eslint-disable theme-colors/no-literal-colors */
 
+const DEFAULT_SYSTEM_COLORS = {
+  primary: '#20a7c9',
+  secondary: '#444e7c',
+  error: '#e04355',
+  warning: '#fcc700',
+  alert: '#fcc700',
+  success: '#5ac189',
+  info: '#66bcfe',
+  grayscale: '#666666',
+};
+
+const DEFAULT_THEME_CONFIG = {
+  borderRadius: 4,
+  body: {
+    backgroundColor: '#FFF',
+    color: '#000',
+  },
+  colors: {
+    darkest: '#000',
+    lightest: '#FFF',
+    text: {
+      label: '#879399',
+      help: '#737373',
+    },
+  },
+  opacity: {
+    light: '10%',
+    mediumLight: '35%',
+    mediumHeavy: '60%',
+    heavy: '80%',
+  },
+  typography: {
+    families: {
+      sansSerif: `'Inter', Helvetica, Arial`,
+      serif: `Georgia, 'Times New Roman', Times, serif`,
+      monospace: `'Fira Code', 'Courier New', monospace`,
+    },
+    weights: {
+      light: 200,
+      normal: 400,
+      medium: 500,
+      bold: 600,
+    },
+    sizes: {
+      xxs: 9,
+      xs: 10,
+      s: 12,
+      m: 14,
+      l: 16,
+      xl: 21,
+      xxl: 28,
+    },
+  },
+  zIndex: {
+    aboveDashboardCharts: 10,
+    dropdown: 11,
+    max: 3000,
+  },
+  transitionTiming: 0.3,
+  gridUnit: 4,
+  brandIconMaxWidth: 37,
+};
+
 interface SystemColors {
   primary: string;
   secondary: string;
@@ -108,12 +171,9 @@ interface LegacySupersetTheme {
   brandIconMaxWidth: number;
 }
 
-// Augmenting the LegacySupersetTheme with the antd tokens
-// goal is to fully move to antd tokens and remove the LegacySupersetTheme
 export interface SupersetTheme extends LegacySupersetTheme {
   antd: Record<string, any>;
 }
-
 export class Theme {
   private readonly systemColors: SystemColors;
 
@@ -144,17 +204,7 @@ export class Theme {
 
   constructor(systemColors?: Partial<SystemColors>, isDarkMode = false) {
     this.isDarkMode = isDarkMode;
-    this.systemColors = {
-      primary: '#20a7c9',
-      secondary: '#444e7c',
-      error: '#e04355',
-      warning: '#fcc700',
-      alert: '#fcc700',
-      success: '#5ac189',
-      info: '#66bcfe',
-      grayscale: '#666666',
-      ...systemColors,
-    };
+    this.systemColors = { ...DEFAULT_SYSTEM_COLORS, ...systemColors };
 
     this.setThemeWithSystemColors(this.systemColors, this.isDarkMode);
     this.setAntdThemeFromTheme();
@@ -245,18 +295,9 @@ export class Theme {
   ): LegacySupersetTheme {
     const colors = this.generateColors();
     let theme: LegacySupersetTheme = {
-      borderRadius: 4,
-      body: {
-        backgroundColor: '#FFF',
-        color: '#000',
-      },
+      ...DEFAULT_THEME_CONFIG,
       colors: {
-        darkest: '#000',
-        lightest: '#FFF',
-        text: {
-          label: '#879399',
-          help: '#737373',
-        },
+        ...DEFAULT_THEME_CONFIG.colors,
         primary: colors.primary,
         secondary: colors.secondary,
         error: colors.error,
@@ -266,42 +307,6 @@ export class Theme {
         info: colors.info,
         grayscale: colors.grayscale,
       },
-      opacity: {
-        light: '10%',
-        mediumLight: '35%',
-        mediumHeavy: '60%',
-        heavy: '80%',
-      },
-      typography: {
-        families: {
-          sansSerif: `'Inter', Helvetica, Arial`,
-          serif: `Georgia, 'Times New Roman', Times, serif`,
-          monospace: `'Fira Code', 'Courier New', monospace`,
-        },
-        weights: {
-          light: 200,
-          normal: 400,
-          medium: 500,
-          bold: 600,
-        },
-        sizes: {
-          xxs: 9,
-          xs: 10,
-          s: 12,
-          m: 14,
-          l: 16,
-          xl: 21,
-          xxl: 28,
-        },
-      },
-      zIndex: {
-        aboveDashboardCharts: 10,
-        dropdown: 11,
-        max: 3000,
-      },
-      transitionTiming: 0.3,
-      gridUnit: 4,
-      brandIconMaxWidth: 37,
     };
 
     if (isDarkTheme) {
@@ -337,88 +342,6 @@ export class Theme {
       sizeUnit: theme.gridUnit,
       zIndexBase: 0,
       zIndexPopupBase: theme.zIndex.max,
-      /*
-      components: {
-        Alert: {
-          borderRadius: theme.borderRadius,
-          fontSize: theme.typography.sizes.m,
-          fontSizeLG: theme.typography.sizes.m,
-          fontSizeIcon: theme.typography.sizes.l,
-          colorText: theme.colors.grayscale.dark4,
-          colorTextHeading: theme.colors.grayscale.dark4,
-        },
-        Avatar: {
-          containerSize: 32,
-          fontSize: theme.typography.sizes.s,
-          lineHeight: 32,
-        },
-        Badge: {
-          paddingXS: theme.gridUnit * 2,
-        },
-        Card: {
-          paddingLG: theme.gridUnit * 6,
-          fontWeightStrong: theme.typography.weights.medium,
-          colorBgContainer: theme.colors.grayscale.light4,
-        },
-        Divider: {
-          colorSplit: supersetTheme.colors.grayscale.light3,
-        },
-        Input: {
-          colorBorder: theme.colors.secondary.light3,
-          colorBgContainer: theme.colors.grayscale.light5,
-          activeShadow: `0 0 0 ${theme.gridUnit / 2}px ${
-            theme.colors.primary.light3
-          }`,
-        },
-        InputNumber: {
-          colorBorder: theme.colors.secondary.light3,
-          colorBgContainer: theme.colors.grayscale.light5,
-          activeShadow: `0 0 0 ${theme.gridUnit / 2}px ${
-            theme.colors.primary.light3
-          }`,
-        },
-        List: {
-          itemPadding: `${theme.gridUnit + 2}px ${theme.gridUnit * 3}px`,
-          paddingLG: theme.gridUnit * 3,
-          colorSplit: theme.colors.grayscale.light3,
-          colorText: theme.colors.grayscale.dark1,
-        },
-        Modal: {
-          colorBgMask: `${theme.colors.grayscale.dark2}73`,
-          contentBg: theme.colors.grayscale.light5,
-          titleFontSize: theme.gridUnit * 4,
-          titleColor: `${theme.colors.grayscale.dark2}D9`,
-          headerBg: theme.colors.grayscale.light4,
-        },
-        Tag: {
-          borderRadiusSM: 2,
-          defaultBg: theme.colors.grayscale.light4,
-        },
-        Progress: {
-          fontSize: theme.typography.sizes.s,
-          colorText: theme.colors.text.label,
-          remainingColor: theme.colors.grayscale.light4,
-        },
-        Popover: {
-          colorBgElevated: theme.colors.grayscale.light5,
-        },
-        Slider: {
-          trackBgDisabled: theme.colors.grayscale.light1,
-          colorBgElevated: theme.colors.grayscale.light5,
-          handleSizeHover: 10,
-          handleLineWidthHover: 2,
-        },
-        Switch: {
-          colorPrimaryHover: theme.colors.primary.base,
-          colorTextTertiary: theme.colors.grayscale.light1,
-        },
-        Tooltip: {
-          fontSize: theme.typography.sizes.s,
-          lineHeight: 1.6,
-        },
-      },
-    }
-    */
     };
   }
 
