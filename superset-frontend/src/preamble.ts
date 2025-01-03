@@ -67,7 +67,7 @@ setupFormatters(
 
 setupDashboardComponents();
 
-if (bootstrapData?.common?.theme_overrides) {
+if (Object.keys(bootstrapData?.common?.theme_overrides || {}).length > 0) {
   themeObject.mergeTheme(bootstrapData.common.theme_overrides);
 }
 

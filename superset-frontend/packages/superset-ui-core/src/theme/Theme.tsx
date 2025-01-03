@@ -136,6 +136,8 @@ export class Theme {
 
   private antdTheme: Record<string, any>;
 
+  private isDarkMode: boolean;
+
   private static readonly denyList: RegExp[] = [
     /purple.*/,
     /dragon.*/,
@@ -159,6 +161,7 @@ export class Theme {
 
   constructor(systemColors?: Partial<SystemColors>, isDarkMode = false) {
     this.setThemeWithSystemColors(systemColors || {}, isDarkMode);
+    this.isDarkMode = isDarkMode;
 
     this.getTheme = this.getTheme.bind(this);
     this.updateTheme = this.updateTheme.bind(this);
@@ -370,6 +373,7 @@ export class Theme {
     legacyTheme: LegacySupersetTheme,
     isDarkMode: boolean,
   ): void {
+    this.isDarkMode = isDarkMode;
     this.legacyTheme = legacyTheme;
     this.setAntdThemeFromLegacyTheme(legacyTheme, isDarkMode);
     this.theme = this.getTheme();
@@ -390,7 +394,7 @@ export class Theme {
 
   mergeTheme(partialTheme: Partial<LegacySupersetTheme>): void {
     const mergedTheme = merge({}, this.legacyTheme, partialTheme);
-    this.updateTheme(mergedTheme, false); // Assuming isDarkMode = false for mergeTheme
+    this.updateTheme(mergedTheme, this.isDarkMode);
   }
 
   private updateProviders(
@@ -414,7 +418,6 @@ export class Theme {
     this.updateProviders = (theme, antdConfig, emotionCache) => {
       setThemeState({ theme, antdConfig, emotionCache });
     };
-
     return (
       <EmotionCacheProvider value={themeState.emotionCache}>
         <EmotionThemeProvider theme={themeState.theme}>

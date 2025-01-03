@@ -27,6 +27,7 @@ describe('Theme Class', () => {
     expect(themeConfig.colors.primary.base).toBe('#20a7c9');
     expect(themeConfig.colors.darkest).toBe('#000');
     expect(themeConfig.colors.lightest).toBe('#FFF');
+    expect(themeConfig.antd.colorBgBase).toBe('#fff');
   });
 
   test('should apply custom system colors and dark mode', () => {
@@ -36,6 +37,7 @@ describe('Theme Class', () => {
     expect(themeConfig.colors.primary.base).toBe('#ff0000');
     expect(themeConfig.colors.darkest).toBe('#FFF');
     expect(themeConfig.colors.lightest).toBe('#000');
+    expect(themeConfig.antd.colorBgBase).toBe('#000');
   });
 });
 

@@ -32,6 +32,8 @@ import {
   SupersetClient,
   getExtensionsRegistry,
   useTheme,
+  isFeatureEnabled,
+  FeatureFlag,
 } from '@superset-ui/core';
 import { MainNav as Menu } from 'src/components/Menu';
 import { Tooltip } from 'src/components/Tooltip';
@@ -55,6 +57,8 @@ import {
   GlobalMenuDataOptions,
   RightMenuProps,
 } from './types';
+import { Switch } from 'src/components/Switch';
+import { themeObject } from '@superset-ui/core';
 
 const extensionsRegistry = getExtensionsRegistry();
 
@@ -473,6 +477,13 @@ const RightMenu = ({
               );
             })}
           </SubMenu>
+        )}
+        {isFeatureEnabled(FeatureFlag.DarkThemeSwitch) && (
+          <Switch
+            onChange={(checked: boolean) => {
+              themeObject.setThemeWithSystemColors({}, checked);
+            }}
+          />
         )}
         <SubMenu
           title={t('Settings')}

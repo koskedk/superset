@@ -49,8 +49,7 @@ export function useTheme() {
 
 const styled = emotionStyled;
 
-const themeObject = new SupersetThemeClass({}, false);
-themeObject.setThemeWithSystemColors({}, true);
+const themeObject = new SupersetThemeClass({}, true);
 
 const { theme } = themeObject;
 const supersetTheme = theme;

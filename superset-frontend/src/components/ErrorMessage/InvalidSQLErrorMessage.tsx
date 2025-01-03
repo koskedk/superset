@@ -51,7 +51,6 @@ function InvalidSQLErrorMessage({
       {column !== null && <pre>{' '.repeat(column - 1)}^</pre>}
     </>
   );
-  console.log('YOYO', errorLine, column, line);
   return (
     <ErrorAlert
       errorType={t('Unable to parse SQL')}
