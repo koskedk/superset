@@ -34,6 +34,7 @@ import {
   useTheme,
   isFeatureEnabled,
   FeatureFlag,
+  themeObject,
 } from '@superset-ui/core';
 import { MainNav as Menu } from 'src/components/Menu';
 import { Tooltip } from 'src/components/Tooltip';
@@ -51,14 +52,13 @@ import DatabaseModal from 'src/features/databases/DatabaseModal';
 import UploadDataModal from 'src/features/databases/UploadDataModel';
 import { uploadUserPerms } from 'src/views/CRUD/utils';
 import TelemetryPixel from 'src/components/TelemetryPixel';
+import { Switch } from 'src/components/Switch';
 import LanguagePicker from './LanguagePicker';
 import {
   ExtensionConfigs,
   GlobalMenuDataOptions,
   RightMenuProps,
 } from './types';
-import { Switch } from 'src/components/Switch';
-import { themeObject } from '@superset-ui/core';
 
 const extensionsRegistry = getExtensionsRegistry();
 
