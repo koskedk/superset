@@ -16,18 +16,19 @@
  * for the specific language governing permissions and
  * limitations under the License.
  */
+@ant-prefix: antd4;
 
-@import '~antd/lib/style/themes/index';
+// Core styles and dependencies
+@import '~antd/lib/style/themes/default.less';  // Use default theme instead of index
 @import '~antd/lib/style/mixins/index';
-@import '~antd/lib/style/core/base';
 
+// Base styles with prefix
+@import '~antd/lib/style/core/base';
 @import '~antd/lib/style/core/iconfont';
 @import '~antd/lib/style/core/motion';
-@import '~antd/lib/style/components.less';
 
-//@import '~antd/lib/style/core';
-//@import '~antd/lib/checkbox/style';
-//@import '~antd/lib/checkbox';
+// All component styles
+@import '~antd/lib/style/components.less';
 
 
 /*

@@ -215,7 +215,7 @@ const DataTableTemporalHeaderCell = ({
         trigger="click"
         content={overlayContent}
         placement="bottomLeft"
-        arrowPointAtCenter
+        arrow={{ pointAtCenter: true }}
       >
         <Icons.SettingOutlined
           iconSize="m"

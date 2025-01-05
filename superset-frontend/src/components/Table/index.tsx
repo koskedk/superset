@@ -22,7 +22,6 @@ import AntTable, {
   ColumnsType,
   TableProps as AntTableProps,
 } from 'antd/lib/table';
-import ConfigProvider from 'antd/lib/config-provider';
 import { PaginationProps } from 'antd/lib/pagination';
 import { t, useTheme, logging, styled } from '@superset-ui/core';
 import Loading from 'src/components/Loading';
@@ -288,9 +287,6 @@ export function Table<RecordType extends object>(
     onChange: onSelectChange,
   };
 
-  const renderEmpty = () =>
-    emptyComponent ?? <div>{mergedLocale.emptyText}</div>;
-
   // Log use of experimental features
   useEffect(() => {
     if (reorderable === true) {
@@ -403,31 +399,29 @@ export function Table<RecordType extends object>(
   };
 
   return (
-    <ConfigProvider renderEmpty={renderEmpty}>
-      <div ref={wrapperRef}>
-        {!virtualize && (
-          <StyledTable
-            {...sharedProps}
-            rowSelection={selectionTypeValue ? rowSelection : undefined}
-            sticky={sticky}
-          />
-        )}
-        {virtualize && (
-          <StyledVirtualTable
-            {...sharedProps}
-            scroll={{
-              y: 300,
-              x: '100vw',
-              // To avoid jest failure by scrollTo
-              ...(process.env.WEBPACK_MODE === 'test' && {
-                scrollToFirstRowOnChange: false,
-              }),
-            }}
-            allowHTML={allowHTML}
-          />
-        )}
-      </div>
-    </ConfigProvider>
+    <div ref={wrapperRef}>
+      {!virtualize && (
+        <StyledTable
+          {...sharedProps}
+          rowSelection={selectionTypeValue ? rowSelection : undefined}
+          sticky={sticky}
+        />
+      )}
+      {virtualize && (
+        <StyledVirtualTable
+          {...sharedProps}
+          scroll={{
+            y: 300,
+            x: '100vw',
+            // To avoid jest failure by scrollTo
+            ...(process.env.WEBPACK_MODE === 'test' && {
+              scrollToFirstRowOnChange: false,
+            }),
+          }}
+          allowHTML={allowHTML}
+        />
+      )}
+    </div>
   );
 }
 
