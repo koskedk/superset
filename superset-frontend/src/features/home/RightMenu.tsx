@@ -479,11 +479,13 @@ const RightMenu = ({
           </SubMenu>
         )}
         {isFeatureEnabled(FeatureFlag.DarkThemeSwitch) && (
-          <Switch
-            onChange={(checked: boolean) => {
-              themeObject.setThemeWithSystemColors({}, checked);
-            }}
-          />
+          <span>
+            <Switch
+              onChange={(checked: boolean) => {
+                themeObject.setThemeWithSystemColors({}, checked);
+              }}
+            />
+          </span>
         )}
         <SubMenu
           title={t('Settings')}

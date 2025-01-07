@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { useState, useEffect, useRef, ReactElement, Key } from 'react';
+import { useState, useEffect, useRef, Key } from 'react';
 
 import AntTable, {
   ColumnsType,
@@ -115,10 +115,6 @@ export interface TableProps<RecordType> {
    * Set table to display no data even if data has been provided
    */
   hideData?: boolean;
-  /**
-   * emptyComponent
-   */
-  emptyComponent?: ReactElement;
   /**
    * Enables setting the text displayed in various components and tooltips within the Table UI.
    */
@@ -255,7 +251,6 @@ export function Table<RecordType extends object>(
     defaultPageSize = 15,
     pageSizeOptions = ['5', '15', '25', '50', '100'],
     hideData = false,
-    emptyComponent,
     locale,
     height,
     virtualize = false,

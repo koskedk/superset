@@ -144,7 +144,7 @@ const ControlPopover: FC<PopoverProps> = ({
     <Popover
       {...props}
       visible={visible}
-      arrow={{ pointAtCenter: true }}
+      arrowPointAtCenter
       placement={placement}
       onVisibleChange={handleOnVisibleChange}
       getPopupContainer={handleGetPopupContainer}

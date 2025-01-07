@@ -39,6 +39,7 @@ export const Table = styled.table`
     background-color: ${theme.antd.colorBgBase};
     border-collapse: separate;
     border-radius: ${theme.borderRadius}px;
+    color: ${theme.antd.colorTextBase};
 
     thead > tr > th {
       border: 0;

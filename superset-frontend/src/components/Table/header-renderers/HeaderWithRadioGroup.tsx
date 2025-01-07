@@ -74,7 +74,7 @@ function HeaderWithRadioGroup(props: HeaderWithRadioGroupProps) {
           </div>
         }
         placement="bottomLeft"
-        arrow={{ pointAtCenter: true }}
+        arrowPointAtCenter
       >
         <Icons.SettingOutlined
           iconSize="m"

@@ -17,7 +17,7 @@
  * under the License.
  */
 import { ReactNode, ComponentType, ReactElement, FC } from 'react';
-import { styled, useTheme, supersetTheme } from '@superset-ui/core';
+import { styled, useTheme } from '@superset-ui/core';
 import { Skeleton, Card } from 'src/components';
 import { Tooltip } from 'src/components/Tooltip';
 import ImageLoader, { BackgroundPosition } from './ImageLoader';
@@ -28,15 +28,6 @@ const ActionsWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
 `;
-
-// Styling part 1: Override Card tokens when possible
-const listViewCardTheme = {
-  components: {
-    Card: {
-      colorBgContainer: supersetTheme.colors.grayscale.light5,
-    },
-  },
-};
 
 // Styling part 2: Use CSS when necessary
 const StyledCard = styled(Card)`

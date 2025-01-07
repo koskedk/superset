@@ -72,7 +72,7 @@ export const SQLPopover = (props: PopoverProps & { sqlExpression: string }) => {
         />
       }
       placement="bottomLeft"
-      arrow={{ pointAtCenter: true }}
+      arrowPointAtCenter
       title={t('SQL expression')}
       {...props}
     >
