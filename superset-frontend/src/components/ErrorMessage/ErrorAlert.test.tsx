@@ -18,7 +18,7 @@
  */
 
 import { screen, fireEvent } from '@testing-library/react';
-import { renderWithTheme } from 'src/utils/testUtils';
+import { renderWithTheme } from 'spec/helpers/theming';
 import ErrorAlert from './ErrorAlert';
 
 describe('ErrorAlert', () => {
